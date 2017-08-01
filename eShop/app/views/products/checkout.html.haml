@@ -1,0 +1,19 @@
+%br
+%br
+%hi Checkout #{@product.name}
+%table{border: 1, width: '100%'}
+	%thead
+		%tr
+			%th{style: 'text-align: left;'} Product
+			%th{width: '10%'} Price
+	%body
+		%tr
+			%td= @product.name
+			%td= number_to_currency @product.price
+		%tr
+			%td{style: 'text-align: right;'} Total:
+			%td
+				%strong= number_to_currency @product.price
+				
+= button_to 'Checkout', buy_product_path(@product), method: :patch
+= link_to 'Back to List', products_path

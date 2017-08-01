@@ -1,0 +1,16 @@
+%h1 Products
+
+- if @products.present?
+	%ul
+		-	@products.each do |product|
+			%li
+				= link_to product.name, product_path(product)
+				&mdash;
+				-if product.stock.zero?
+					Out of stock
+				-else
+					= link_to 'Buy', checkout_product_path(product)
+- else
+	No products.
+	
+=link_to 'Add product', new_product_path
